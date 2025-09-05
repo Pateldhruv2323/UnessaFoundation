@@ -151,7 +151,7 @@ const Login = () => {
       // Step 1: Check if user exists
       setLoadingMessage("Checking your account...");
       const checkRes = await fetch(
-        "http://localhost:5000/api/users/check-user",
+        "https://donate.unessafoundation.org/api/users/check-user",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -197,7 +197,7 @@ const Login = () => {
         // Step 2: Get user details
         setLoadingMessage("Loading your profile...");
         const userRes = await fetch(
-          `http://localhost:5000/api/users/get-user/${email}`
+          `https://donate.unessafoundation.org/api/users/get-user/${email}`
         );
         
         if (!userRes.ok) {
@@ -229,7 +229,7 @@ const Login = () => {
         // Step 3: Quiz status
         setLoadingMessage("Checking your progress...");
         const quizRes = await fetch(
-          `http://localhost:5000/api/users/quiz-status/${email}`
+          `https://donate.unessafoundation.org/api/users/quiz-status/${email}`
         );
         
         let quizData = { quizStatus: "notAttempted" };
@@ -352,7 +352,7 @@ const Login = () => {
       if (window.google?.accounts?.id) {
         try {
           window.google.accounts.id.initialize({
-            client_id: "632235295452-q80u7io2eit1gh39vo63euk6dbg6ciij.apps.googleusercontent.com",
+            client_id: "224248311701-0fsinv6s6ggpg9ss9jl737hsun6oj264.apps.googleusercontent.com",
             callback: handleCredentialResponse,
             scope: "email profile",
             context: "signin",

@@ -34,7 +34,7 @@ const razorpay = new Razorpay({
 
 // CORS configuration - Update with your frontend URL
 const allowedOrigins = [
-  "https://volunteerdashboard.vercel.app",
+  "https://unessa-foundation.vercel.app",
   "http://localhost:5173",
   "http://localhost:3000",
   "http://localhost:4173",

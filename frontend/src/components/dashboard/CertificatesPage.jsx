@@ -15,7 +15,7 @@ const CertificatesPage = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axios.get(`http://localhost:5000/api/users/quiz-status/${user.email}`)
+      axios.get(`https://donate.unessafoundation.org/api/users/quiz-status/${user.email}`)
         .then(res => setQuizStatus(res.data.quizStatus))
         .catch(() => setQuizStatus("notAttempted"));
     }

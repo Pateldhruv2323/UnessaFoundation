@@ -33,7 +33,7 @@ function Donation() {
 
         // 2. Fetch username from backend
        const userRes = await axios.get(
-  `http://localhost:5000/api/users/get-user/${email}`
+  `https://donate.unessafoundation.org/api/users/get-user/${email}`
 );
 
 
@@ -42,7 +42,7 @@ function Donation() {
         console.log("Fetched username:", username);
 
         // 3. Fetch donations with username filter
-        const donationRes = await axios.get(`http://localhost:5000/api/donations`, {
+        const donationRes = await axios.get(`https://donate.unessafoundation.org/api/donations`, {
           params: { username: username }
         });
 
@@ -69,7 +69,7 @@ function Donation() {
     fetchPayments();
 
     // 4. Socket listener for real-time updates
-    const socket = ioClient("http://localhost:5000/");
+    const socket = ioClient("https://donate.unessafoundation.org/");
 
     socket.on("connect", () => console.log("Socket connected:", socket.id));
 

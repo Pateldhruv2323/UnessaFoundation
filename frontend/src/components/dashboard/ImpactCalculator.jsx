@@ -91,7 +91,7 @@ const ImpactCalculator = () => {
       if (!username) {
         const email = parsedUser?.email || localStorage.getItem("email");
         if (email) {
-          const userRes = await axios.get(`http://localhost:5000/api/users/${email}`);
+          const userRes = await axios.get(`https://donate.unessafoundation.org/api/users/${email}`);
           username = userRes.data.username;
           console.log("Fetched username from backend:", username);
 
@@ -109,7 +109,7 @@ const ImpactCalculator = () => {
       }
 
       // 4️⃣ Fetch donations from backend using username
-      const res = await axios.get("http://localhost:5000/api/donations", {
+      const res = await axios.get("https://donate.unessafoundation.org/api/donations", {
         params: { username }
       });
 
@@ -135,7 +135,7 @@ const ImpactCalculator = () => {
     fetchAndAnimate(); // Initial load
 
     // 🔌 Connect to backend Socket.IO server
-    const socket = ioClient("http://localhost:5000/");
+    const socket = ioClient("https://donate.unessafoundation.org/");
 
     socket.on("connect", () => console.log("✅ Socket connected:", socket.id));
 
@@ -154,7 +154,7 @@ const ImpactCalculator = () => {
   }, []);
 
   const handleCopyLink = () => {
-  const baseURL = "http://localhost:5173/form";
+  const baseURL = "https://volunteerdashboard.vercel.app/form";
   const refName = localStorage.getItem("username") || "";
   const finalURL = `${baseURL}?ref=${encodeURIComponent(refName)}`;
 
@@ -170,7 +170,7 @@ const ImpactCalculator = () => {
 };
 
 const handleShare = () => {
-  const baseURL = "http://localhost:5173/form";
+  const baseURL = "https://volunteerdashboard.vercel.app/form";
   const refName = localStorage.getItem("username") || "";
   const finalURL = `${baseURL}?ref=${encodeURIComponent(refName)}`;
   const message = `*Hello!* 👋 I’m volunteering with *Unessa Foundation*, an NGO based in Vadodara, dedicated to transforming the lives of underprivileged children through education 📚, mentorship 🤝, and life skills 💡.🎓 *Project Sneh* is our flagship initiative that supports children from orphanages, low-income families 💛, and rural villages — giving them not just schooling, but the tools and confidence to thrive in life.

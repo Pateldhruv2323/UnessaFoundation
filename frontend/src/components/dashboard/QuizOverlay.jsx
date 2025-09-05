@@ -79,7 +79,7 @@ const QuizOverlay = ({ user, onComplete }) => {
         try {
           // Fetch full user data from backend
           const { data: fullUser } = await axios.get(
-            `http://localhost:5000/api/users/get-user/${safeUser.email}`
+            `https://donate.unessafoundation.org/api/users/get-user/${safeUser.email}`
           );
 
           console.log("Full user fetched from DB:", fullUser);
@@ -91,7 +91,7 @@ const QuizOverlay = ({ user, onComplete }) => {
 
           // Generate offer letter
           const response = await axios.post(
-            "http://localhost:5000/offer/generate-offer",
+            "https://donate.unessafoundation.org/offer/generate-offer",
             {
               userId: fullUser.id,
               name: fullUser.name,
@@ -107,7 +107,7 @@ const QuizOverlay = ({ user, onComplete }) => {
           );
 
           if (response.data.success) {
-            await axios.post("http://localhost:5000/api/users/quiz-status", {
+            await axios.post("https://donate.unessafoundation.org/api/users/quiz-status", {
               email: safeUser.email,
               status: "passed",
             });
@@ -138,7 +138,7 @@ setTimeout(() => {
       } else {
         // User failed the quiz
         try {
-          await axios.post("http://localhost:5000/api/users/quiz-status", {
+          await axios.post("https://donate.unessafoundation.org/api/users/quiz-status", {
             email: safeUser?.email,
             status: "failed",
           });

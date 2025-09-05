@@ -54,7 +54,7 @@ const Form = () => {
     if (isInvalid) return;
 
     try {
-      const res = await axios.post('http://localhost:5000/api/create-order', {
+      const res = await axios.post('https://donate.unessafoundation.org/api/create-order', {
         ...formData,
         amount: baseAmount,
       });
@@ -69,7 +69,7 @@ const Form = () => {
         order_id: orderId,
         handler: async function (response) {
           try {
-            await axios.post('http://localhost:5000/api/verify-payment', {
+            await axios.post('https://donate.unessafoundation.org/api/verify-payment', {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
@@ -81,7 +81,7 @@ const Form = () => {
               amount: baseAmount,
             });
 
-            await axios.post('http://localhost:5000/api/save-payment', {
+            await axios.post('https://donate.unessafoundation.org/api/save-payment', {
               refName: localStorage.getItem("username"),
               name: formData.name,
               email: formData.email,

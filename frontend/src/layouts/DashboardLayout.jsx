@@ -105,7 +105,7 @@ const DashboardLayout = () => {
   
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/api/users/get-user/${user.email}`)
+      fetch(` https://donate.unessafoundation.org/api/users/get-user/${user.email}`)
         .then(res => res.json())
         .then(data => {
           if (data && data.hasSeenTour === false) {
@@ -221,7 +221,7 @@ const DashboardLayout = () => {
       setShowQuizPrompt(true);
   
       if (user?.email) {
-        fetch("http://localhost:5000/api/users/mark-tour-seen", {
+        fetch("https://donate.unessafoundation.org/api/users/mark-tour-seen", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: user.email }),

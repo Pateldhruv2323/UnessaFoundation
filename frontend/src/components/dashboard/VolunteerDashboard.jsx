@@ -54,7 +54,7 @@ const VolunteerDashboard = () => {
     // Only initialize Socket.IO if needed
     let socket;
     try {
-      socket = io("http://localhost:5000/", {
+      socket = io("https://donate.unessafoundation.org/", {
         transports: ["websocket", "polling"],
         autoConnect: true,
       });
